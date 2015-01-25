@@ -24,6 +24,10 @@
                             <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" />
                         </span>
                     </div>
+                    <div>
+                        <asp:RequiredFieldValidator ID="vd_requiredKeyword" CssClass="text-danger" runat="server" 
+                            ErrorMessage="Search keyword required." ControlToValidate="tb_search"></asp:RequiredFieldValidator>
+                    </div>
                 </div>
                 <div class="form-group pull-right">
                     <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary">
@@ -44,7 +48,7 @@
                 <div class="col-sm-10">
                     <div>
                         <asp:Label runat="server" class="text-muted" Text="Document: "></asp:Label>
-                        <asp:Label ID="lb_docName" runat="server" class="text-info" Text="startdoc.co"></asp:Label>
+                        <asp:Label ID="lb_docName" runat="server" class="text-info" Text=""></asp:Label>
                     </div>
                     <div>
                         <asp:Label runat="server" Text="Result: "></asp:Label>
