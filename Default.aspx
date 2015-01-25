@@ -21,7 +21,7 @@
                     <div class="input-group">
                         <asp:TextBox ID="tb_search" class="form-control" placeholder="Search keywords" runat="server"></asp:TextBox>
                         <span class="input-group-btn">
-                            <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" />
+                            <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" OnClick="btn_search_Click" />
                         </span>
                     </div>
                     <div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="form-group pull-right">
-                    <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary">
+                    <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary" OnClick="btn_start_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-step-backward"></i>
                     </asp:LinkButton>
                     <asp:LinkButton ID="btn_prev" runat="server" class="btn btn-primary">
