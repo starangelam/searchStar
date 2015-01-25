@@ -6,22 +6,64 @@
 <head runat="server">
     <title>Search Star</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/main.css" rel="stylesheet" />
 </head>
 <body>
     <div class="page-header">
         <h1>
-            <img src="images/logo.jpg" class="img-rounded" style="height: 90px;" />
+            <img src="images/logo.jpg" class="img-rounded logo" />
             Search Star <small>COMP4870 Assignment 1</small></h1>
     </div>
     <form id="form1" runat="server">
         <div class="container">
-            <div class="form-group">
-                <div class="input-group">
-                    <asp:TextBox ID="tb_search" class="form-control" placeholder="Search keywords" runat="server"></asp:TextBox>
-                    <span class="input-group-btn">
-                        <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" />
-                    </span>
+            <div class="row">
+                <div class="form-group col-sm-9">
+                    <div class="input-group">
+                        <asp:TextBox ID="tb_search" class="form-control" placeholder="Search keywords" runat="server"></asp:TextBox>
+                        <span class="input-group-btn">
+                            <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" />
+                        </span>
+                    </div>
                 </div>
+                <div class="form-group pull-right">
+                    <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary">
+                        <i aria-hidden="true" class="glyphicon glyphicon-step-backward"></i>
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="btn_prev" runat="server" class="btn btn-primary">
+                        <i aria-hidden="true" class="glyphicon glyphicon-backward"></i>
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="btn_next" runat="server" class="btn btn-primary">
+                        <i aria-hidden="true" class="glyphicon glyphicon-forward"></i>
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="btn_end" runat="server" class="btn btn-primary">
+                        <i aria-hidden="true" class="glyphicon glyphicon-step-forward"></i>
+                    </asp:LinkButton>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-10">
+                    <div>
+                        <asp:Label runat="server" class="text-muted" Text="Document: "></asp:Label>
+                        <asp:Label ID="lb_docName" runat="server" class="text-info" Text="startdoc.co"></asp:Label>
+                    </div>
+                    <div>
+                        <asp:Label runat="server" Text="Result: "></asp:Label>
+                        <asp:Label ID="lb_resultCurr" runat="server" Text=""></asp:Label>
+                        <asp:Label runat="server" Text="of"></asp:Label>
+                        <asp:Label ID="lb_resultTotal" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <asp:LinkButton ID="btn_print" runat="server" class="btn btn-default">
+                        <i aria-hidden="true" class="glyphicon glyphicon-print"></i>
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="btn_download" runat="server" class="btn btn-default">
+                        <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>
+                    </asp:LinkButton>
+                </div>
+            </div>
+            <div class="form-group row">
+                <asp:TextBox ID="tb_viewer" class="form-control readonly-tb" Rows="20" runat="server" ReadOnly="True" TextMode="MultiLine"></asp:TextBox>
             </div>
         </div>
     </form>

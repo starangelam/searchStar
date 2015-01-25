@@ -1,0 +1,8 @@
+﻿.logo {
+    height: 90px;
+}
+
+.form-control[readonly] {
+  cursor: text !important;
+  background-color: #fff;
+}
