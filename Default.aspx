@@ -33,13 +33,13 @@
                     <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary" OnClick="btn_start_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-step-backward"></i>
                     </asp:LinkButton>
-                    <asp:LinkButton ID="btn_prev" runat="server" class="btn btn-primary">
+                    <asp:LinkButton ID="btn_prev" runat="server" class="btn btn-primary" OnClick="btn_prev_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-backward"></i>
                     </asp:LinkButton>
-                    <asp:LinkButton ID="btn_next" runat="server" class="btn btn-primary">
+                    <asp:LinkButton ID="btn_next" runat="server" class="btn btn-primary" OnClick="btn_next_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-forward"></i>
                     </asp:LinkButton>
-                    <asp:LinkButton ID="btn_end" runat="server" class="btn btn-primary">
+                    <asp:LinkButton ID="btn_end" runat="server" class="btn btn-primary" OnClick="btn_end_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-step-forward"></i>
                     </asp:LinkButton>
                 </div>

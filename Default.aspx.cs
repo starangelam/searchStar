@@ -44,6 +44,7 @@ public partial class _Default : System.Web.UI.Page
         if (!IsPostBack)
         {
             setNavBtnState();
+            updateLabels();
         }
     }
 
@@ -51,15 +52,9 @@ public partial class _Default : System.Web.UI.Page
     {
         search(tb_search.Text.Trim());
 
-        loadFile(searchResult[currIndx].Trim());
+        loadFile();
         setNavBtnState();
         updateLabels();
-    }
-
-    protected void btn_start_Click(object sender, EventArgs e)
-    {
-        currIndx = 0;
-        
     }
 
     private void search(string keywords)
@@ -67,49 +62,99 @@ public partial class _Default : System.Web.UI.Page
         string searchDir = ConfigurationManager.AppSettings["searchDir"];
         string projectRoot = MapPath("~");
         string[] toSearch = Directory.GetFiles(projectRoot + searchDir);
+        
         // search through files and return a list of file path
-
         // mock code, pretend this is the search result
         currIndx = 0;
         searchResult = new List<string>(toSearch);
     }
 
-    private void loadFile(string filePath)
+    private void loadFile()
     {
-        tb_viewer.Text = File.ReadAllText(filePath);
+        if (searchResult.Count > 0)
+        {
+            string filePath = searchResult[currIndx].Trim();
+            tb_viewer.Text = File.ReadAllText(filePath);
+        }
+        else
+        {
+            tb_viewer.Text = "Keywords not found.";
+        }
     }
 
     private void updateLabels()
     {
-        lb_docName.Text = Path.GetFileName(searchResult[currIndx]);
+        if (searchResult.Count == 0) {
+            lb_docName.Text = "---";
+            lb_resultCurr.Text = currIndx.ToString();
+        }
+        else {
+            lb_docName.Text = Path.GetFileName(searchResult[currIndx]);
+            lb_resultCurr.Text = (currIndx + 1).ToString();
+        }
+        
         lb_resultTotal.Text = searchResult.Count.ToString();
-        lb_resultCurr.Text = (currIndx + 1).ToString();
     }
 
     private void setNavBtnState()
     {
-        if (searchResult.Count == 0)
-        {
-            btn_start.Enabled = false;
-            btn_end.Enabled = false;
-            btn_prev.Enabled = false;
-            btn_next.Enabled = false;
-        }
-        else if (currIndx == 0)
-        {
-            btn_prev.Enabled = false;
-        }
-        else if (currIndx == (searchResult.Count - 1))
-        {
-            btn_next.Enabled = false;
+        // disable all navigation buttons if no search result
+        btn_start.Enabled = (searchResult.Count <= 1) ? false : true;
+        btn_end.Enabled = (searchResult.Count <= 1) ? false : true;
+        btn_prev.Enabled = (searchResult.Count <= 1) ? false : true;
+        btn_next.Enabled = (searchResult.Count <= 1) ? false : true;
 
-        }
-        else
+        // disable prev / next button if at start of list
+        if (currIndx == 0)
         {
-            btn_start.Enabled = true;
-            btn_end.Enabled = true;
-            btn_prev.Enabled = true;
-            btn_next.Enabled = true;
+            btn_prev.Enabled = false;
         }
+
+        if (currIndx == (searchResult.Count - 1))
+        {
+            btn_next.Enabled = false;
+        }
+
+    }
+
+    protected void btn_start_Click(object sender, EventArgs e)
+    {
+        currIndx = 0;
+
+        loadFile();
+        setNavBtnState();
+        updateLabels();
+    }
+
+    protected void btn_end_Click(object sender, EventArgs e)
+    {
+        currIndx = searchResult.Count - 1;
+
+        loadFile();
+        setNavBtnState();
+        updateLabels();
+    }
+    protected void btn_next_Click(object sender, EventArgs e)
+    {
+        if (currIndx < (searchResult.Count - 1))
+        {
+            currIndx++;
+        }
+
+        loadFile();
+        setNavBtnState();
+        updateLabels();
+    }
+
+    protected void btn_prev_Click(object sender, EventArgs e)
+    {
+        if (currIndx > 0)
+        {
+            currIndx--;
+        }
+
+        loadFile();
+        setNavBtnState();
+        updateLabels();
     }
 }
