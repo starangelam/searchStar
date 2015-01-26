@@ -19,13 +19,16 @@
             <div class="row">
                 <div class="form-group col-sm-9">
                     <div class="input-group">
+                        <%--Search bar--%>
                         <asp:TextBox ID="tb_search" class="form-control" placeholder="Search keywords" runat="server"></asp:TextBox>
                         <span class="input-group-btn">
-                            <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" />
+                            <%--Search Button--%>
+                            <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" OnClick="SubmitSearch" />
                         </span>
                     </div>
                 </div>
                 <div class="form-group pull-right">
+                    <%--Begin Change Text File Controls--%>
                     <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary">
                         <i aria-hidden="true" class="glyphicon glyphicon-step-backward"></i>
                     </asp:LinkButton>
@@ -38,6 +41,7 @@
                     <asp:LinkButton ID="btn_end" runat="server" class="btn btn-primary">
                         <i aria-hidden="true" class="glyphicon glyphicon-step-forward"></i>
                     </asp:LinkButton>
+                    <%--End Change Text File Controls--%>
                 </div>
             </div>
             <div class="row form-group">
@@ -63,7 +67,11 @@
                 </div>
             </div>
             <div class="form-group row">
-                <asp:TextBox ID="tb_viewer" class="form-control readonly-tb" Rows="20" runat="server" ReadOnly="True" TextMode="MultiLine"></asp:TextBox>
+                 <%--Text Viewer, removed "OnTextChanged="tb_viewer_TextChanged"" temporarily --%>
+                <asp:TextBox ID="tb_viewer" class="form-control readonly-tb" Rows="20" 
+                    runat="server" ReadOnly="True" TextMode="MultiLine" 
+                   ></asp:TextBox>
+
             </div>
         </div>
     </form>
