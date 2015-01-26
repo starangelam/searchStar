@@ -70,9 +70,9 @@
                     </div>
                 </div>
                 <div class="pull-right">
-                    <asp:LinkButton ID="btn_print" runat="server" class="btn btn-default">
+                    <button id="btn_print" class="btn btn-default">
                         <i aria-hidden="true" class="glyphicon glyphicon-print"></i>
-                    </asp:LinkButton>
+                    </button>
                     <asp:LinkButton ID="btn_download" runat="server" class="btn btn-default">
                         <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>
                     </asp:LinkButton>
@@ -87,5 +87,9 @@
             </div>
         </div>
     </form>
+
+    <script src="Scripts/jQuery.print.js"></script>
+    <script src="Scripts/main.js"></script>
+
 </body>
 </html>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -161,6 +163,7 @@ public partial class _Default : System.Web.UI.Page
         setNavBtnState();
         updateLabels();
     }
+
     protected void btn_next_Click(object sender, EventArgs e)
     {
         if (currIndx < (searchResult.Count - 1))
@@ -183,5 +186,5 @@ public partial class _Default : System.Web.UI.Page
         loadFile();
         setNavBtnState();
         updateLabels();
-    }
+    }    
 }
