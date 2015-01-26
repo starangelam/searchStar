@@ -54,36 +54,54 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btn_search_Click(object sender, EventArgs e)
     {
-        search(tb_search.Text.Trim());
+       //search(tb_search.Text.Trim());
 
-        //String userInput = tb_search.Text;
-        //String[] searchTerms = userInput.Split(null);
-        //List<String> validSearchTerms = new List<string>();
-        //String[] allTextFiles = Directory.GetFiles(Utils.GetTextFilePhysicalDir());
-        //String[] validTextFiles;
-        //int matchingTerms;
+        String userInput = tb_search.Text;
+        String[] searchTerms = userInput.Split(null);
+        List<String> validSearchTerms = new List<string>();
+        String[] allTextFiles = Directory.GetFiles(Utils.GetTextFilePhysicalDir());
+        List<String> validTextFiles = new List<string>();
+        List<String> testList = new List<string>();
+        int matchingTerms = 0;
 
-        ////Remove excluded terms from searchTerms
-        //foreach (string term in searchTerms)
-        //{
-        //    if (!File.ReadAllText(Utils.GetExclusionFile()).Contains(term))
-        //    {
-        //        validSearchTerms.Add(term);
-        //    }
-        //}
-        ////For each file in the directory
-        //    //For each search term
-        //        //Does the file contain the search term?
-        //        //If yes: matchingTerms++, else: break
-        //    //If matchingTerms == searchTerms length, add current text to validTextFiles
-        ////int Vara = File.ReadAllText(path).Contains("mystring") ? 1 : 0;
+        //Remove excluded terms from searchTerms
+        foreach (string term in searchTerms)
+        {
+            if (!File.ReadAllText(Utils.GetExclusionFile()).Contains(term))
+            {
+               validSearchTerms.Add(term);
+            }
+        }
+        
 
+        foreach (string file in allTextFiles)
+        {
+            matchingTerms = 0;
+            testList.Add(File.ReadAllText(file));
+            foreach (string term in validSearchTerms)
+            {
+                //Does the file contain the search term?
+                if (File.ReadAllText(file).Contains(term))
+                {
+                    matchingTerms++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if(matchingTerms==searchTerms.Length)
+            {
+                validTextFiles.Add(File.ReadAllText(file));
+            }
+        }
 
-        //tb_viewer.Text = validSearchTerms.ToString();
+        tb_viewer.Text = validTextFiles.First();
+       // tb_viewer.Text = "Hey.";
 
-        loadFile();
-        setNavBtnState();
-        updateLabels();
+       //loadFile();
+       //setNavBtnState();
+       // updateLabels();
     }
 
     private void search(string keywords)

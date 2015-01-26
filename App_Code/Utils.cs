@@ -17,16 +17,16 @@ public class Utils
 	}
     public static string GetTextFilePhysicalDir()
     {
-        string textDir = ConfigurationManager.AppSettings["textFilesDir"];
+        string textDir = ConfigurationManager.AppSettings["searchDir"];
         string physicalDir = HttpContext.Current.Server.MapPath("~");
-        return physicalDir + "\\" + textDir;
+        return physicalDir + textDir;
     }
 
     public static string GetExclusionFile()
     {
-        string textDir = ConfigurationManager.AppSettings["exclusionFilesDir"];
+        string textDir = ConfigurationManager.AppSettings["exclusionDir"];
         string fileName = "\\exclusion.txt";
         string physicalDir = HttpContext.Current.Server.MapPath("~");
-        return physicalDir + "\\" + textDir + fileName;
+        return physicalDir +  textDir + fileName;
     }
 }

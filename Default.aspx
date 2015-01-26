@@ -22,12 +22,8 @@
                         <%--Search bar--%>
                         <asp:TextBox ID="tb_search" class="form-control" placeholder="Search keywords" runat="server"></asp:TextBox>
                         <span class="input-group-btn">
-<<<<<<< HEAD
                             <%--Search Button--%>
-                            <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" OnClick="SubmitSearch" />
-=======
                             <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" OnClick="btn_search_Click" />
->>>>>>> 447ef2df8cf5bf6735f550958a3812a87913fe59
                         </span>
                     </div>
                     <div>
@@ -36,12 +32,8 @@
                     </div>
                 </div>
                 <div class="form-group pull-right">
-<<<<<<< HEAD
                     <%--Begin Change Text File Controls--%>
-                    <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary">
-=======
                     <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary" OnClick="btn_start_Click">
->>>>>>> 447ef2df8cf5bf6735f550958a3812a87913fe59
                         <i aria-hidden="true" class="glyphicon glyphicon-step-backward"></i>
                     </asp:LinkButton>
                     <asp:LinkButton ID="btn_prev" runat="server" class="btn btn-primary" OnClick="btn_prev_Click">
@@ -79,10 +71,8 @@
                 </div>
             </div>
             <div class="form-group row">
-                 <%--Text Viewer, removed "OnTextChanged="tb_viewer_TextChanged"" temporarily --%>
                 <asp:TextBox ID="tb_viewer" class="form-control readonly-tb" Rows="20" 
-                    runat="server" ReadOnly="True" TextMode="MultiLine" 
-                   ></asp:TextBox>
+                    runat="server" ReadOnly="True" TextMode="MultiLine"></asp:TextBox>
 
             </div>
         </div>
