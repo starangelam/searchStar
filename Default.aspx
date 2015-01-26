@@ -22,23 +22,35 @@
                         <%--Search bar--%>
                         <asp:TextBox ID="tb_search" class="form-control" placeholder="Search keywords" runat="server"></asp:TextBox>
                         <span class="input-group-btn">
+<<<<<<< HEAD
                             <%--Search Button--%>
                             <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" OnClick="SubmitSearch" />
+=======
+                            <asp:Button ID="btn_search" class="btn btn-primary" runat="server" Text="Search" OnClick="btn_search_Click" />
+>>>>>>> 447ef2df8cf5bf6735f550958a3812a87913fe59
                         </span>
+                    </div>
+                    <div>
+                        <asp:RequiredFieldValidator ID="vd_requiredKeyword" CssClass="text-danger" runat="server" 
+                            ErrorMessage="Search keyword required." ControlToValidate="tb_search"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="form-group pull-right">
+<<<<<<< HEAD
                     <%--Begin Change Text File Controls--%>
                     <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary">
+=======
+                    <asp:LinkButton ID="btn_start" runat="server" class="btn btn-primary" OnClick="btn_start_Click">
+>>>>>>> 447ef2df8cf5bf6735f550958a3812a87913fe59
                         <i aria-hidden="true" class="glyphicon glyphicon-step-backward"></i>
                     </asp:LinkButton>
-                    <asp:LinkButton ID="btn_prev" runat="server" class="btn btn-primary">
+                    <asp:LinkButton ID="btn_prev" runat="server" class="btn btn-primary" OnClick="btn_prev_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-backward"></i>
                     </asp:LinkButton>
-                    <asp:LinkButton ID="btn_next" runat="server" class="btn btn-primary">
+                    <asp:LinkButton ID="btn_next" runat="server" class="btn btn-primary" OnClick="btn_next_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-forward"></i>
                     </asp:LinkButton>
-                    <asp:LinkButton ID="btn_end" runat="server" class="btn btn-primary">
+                    <asp:LinkButton ID="btn_end" runat="server" class="btn btn-primary" OnClick="btn_end_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-step-forward"></i>
                     </asp:LinkButton>
                     <%--End Change Text File Controls--%>
@@ -48,7 +60,7 @@
                 <div class="col-sm-10">
                     <div>
                         <asp:Label runat="server" class="text-muted" Text="Document: "></asp:Label>
-                        <asp:Label ID="lb_docName" runat="server" class="text-info" Text="startdoc.co"></asp:Label>
+                        <asp:Label ID="lb_docName" runat="server" class="text-info" Text=""></asp:Label>
                     </div>
                     <div>
                         <asp:Label runat="server" Text="Result: "></asp:Label>
