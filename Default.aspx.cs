@@ -54,14 +54,19 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btn_search_Click(object sender, EventArgs e)
     {
-       //search(tb_search.Text.Trim());
+       searchResult = new List<string>();
+       search(tb_search.Text);
 
-        String userInput = tb_search.Text;
-        String[] searchTerms = userInput.Split(null);
+       loadFile();
+       setNavBtnState();
+       updateLabels();
+    }
+
+    private void search(string keywords)
+    {
+        String[] searchTerms = keywords.Split(null);
         List<String> validSearchTerms = new List<string>();
         String[] allTextFiles = Directory.GetFiles(Utils.GetTextFilePhysicalDir());
-        List<String> validTextFiles = new List<string>();
-        List<String> testList = new List<string>();
         int matchingTerms = 0;
 
         //Remove excluded terms from searchTerms
@@ -69,19 +74,18 @@ public partial class _Default : System.Web.UI.Page
         {
             if (!File.ReadAllText(Utils.GetExclusionFile()).Contains(term))
             {
-               validSearchTerms.Add(term);
+                validSearchTerms.Add(term.ToLower());
             }
         }
-        
+
 
         foreach (string file in allTextFiles)
         {
             matchingTerms = 0;
-            testList.Add(File.ReadAllText(file));
             foreach (string term in validSearchTerms)
             {
                 //Does the file contain the search term?
-                if (File.ReadAllText(file).Contains(term))
+                if (File.ReadAllText(file.ToLower()).Contains(term))
                 {
                     matchingTerms++;
                 }
@@ -90,30 +94,13 @@ public partial class _Default : System.Web.UI.Page
                     break;
                 }
             }
-            if(matchingTerms==searchTerms.Length)
+            if (matchingTerms == validSearchTerms.Count)
             {
-                validTextFiles.Add(File.ReadAllText(file));
+                searchResult.Add(file);
             }
         }
-
-        tb_viewer.Text = validTextFiles.First();
-       // tb_viewer.Text = "Hey.";
-
-       //loadFile();
-       //setNavBtnState();
-       // updateLabels();
-    }
-
-    private void search(string keywords)
-    {
-        string searchDir = ConfigurationManager.AppSettings["searchDir"];
-        string projectRoot = MapPath("~");
-        string[] toSearch = Directory.GetFiles(projectRoot + searchDir);
         
-        // search through files and return a list of file path
-        // mock code, pretend this is the search result
         currIndx = 0;
-        searchResult = new List<string>(toSearch);
     }
 
     private void loadFile()
