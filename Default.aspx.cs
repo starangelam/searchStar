@@ -48,6 +48,7 @@ public partial class _Default : System.Web.UI.Page
         if (!IsPostBack)
         {
             setNavBtnState();
+            setAuxiliaryBtnState();
             updateLabels();
         }
     }
@@ -58,6 +59,7 @@ public partial class _Default : System.Web.UI.Page
        search(tb_search.Text);
 
        loadFile();
+       setAuxiliaryBtnState();
        setNavBtnState();
        updateLabels();
     }
@@ -149,6 +151,21 @@ public partial class _Default : System.Web.UI.Page
             btn_next.Enabled = false;
         }
 
+    }
+
+    private void setAuxiliaryBtnState()
+    {
+        if (searchResult.Count == 0)
+        {
+            btn_download.Enabled = false;
+            btn_print.Enabled = false;
+        }
+        else
+        {
+            btn_download.Enabled = true;
+            btn_print.Enabled = true;
+        }
+       
     }
 
     protected void btn_start_Click(object sender, EventArgs e)

@@ -62,9 +62,9 @@
                     </div>
                 </div>
                 <div class="pull-right">
-                    <button id="btn_print" class="btn btn-default">
+                    <asp:LinkButton id="btn_print" runat="server" class="btn btn-default">
                         <i aria-hidden="true" class="glyphicon glyphicon-print"></i>
-                    </button>
+                    </asp:LinkButton>
                     <asp:LinkButton ID="btn_download" runat="server" class="btn btn-default">
                         <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>
                     </asp:LinkButton>
