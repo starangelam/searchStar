@@ -65,7 +65,7 @@
                     <asp:LinkButton id="btn_print" runat="server" class="btn btn-default">
                         <i aria-hidden="true" class="glyphicon glyphicon-print"></i>
                     </asp:LinkButton>
-                    <asp:LinkButton ID="btn_download" runat="server" class="btn btn-default">
+                    <asp:LinkButton ID="btn_download" runat="server" class="btn btn-default" OnClick="btn_download_Click">
                         <i aria-hidden="true" class="glyphicon glyphicon-download-alt"></i>
                     </asp:LinkButton>
                 </div>

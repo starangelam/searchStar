@@ -1,13 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.IO;
 
 public partial class _Default : System.Web.UI.Page
@@ -168,6 +160,16 @@ public partial class _Default : System.Web.UI.Page
        
     }
 
+    protected void btn_download_Click(object sender, EventArgs e)
+    {
+        string filepath = searchResult[currIndx];
+        string filename = Path.GetFileName(filepath);
+        Response.ContentType = "application/octet-stream";
+        Response.AddHeader("Content-Disposition", "attachment;filename=" + filename);
+        Response.TransmitFile(filepath);
+        Response.End();
+    }
+
     protected void btn_start_Click(object sender, EventArgs e)
     {
         currIndx = 0;
@@ -208,5 +210,5 @@ public partial class _Default : System.Web.UI.Page
         loadFile();
         setNavBtnState();
         updateLabels();
-    }    
+    }
 }
