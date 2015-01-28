@@ -12,7 +12,7 @@
     <div class="page-header">
         <h1>
             <img src="images/logo.jpg" class="img-rounded logo" />
-            Search Star <small>COMP4870 Assignment 1</small></h1>
+            BCIT Search Star <small>COMP4870 Assignment 1</small></h1>
     </div>
     <form id="form1" runat="server">
         <div class="container">
