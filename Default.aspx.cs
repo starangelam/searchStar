@@ -88,7 +88,7 @@ public partial class _Default : System.Web.UI.Page
                     break;
                 }
             }
-            if (matchingTerms == validSearchTerms.Count)
+            if (matchingTerms == validSearchTerms.Count && validSearchTerms.Count != 0)
             {
                 searchResult.Add(file);
             }
